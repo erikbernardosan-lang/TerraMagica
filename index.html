@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu do Jogo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="game-container" class="res-1920">
+        <div id="main-menu" class="menu-screen active">
+            <h1>NOME DO JOGO</h1>
+            <button onclick="startGame()">Jogar</button>
+            <button onclick="openScreen('options-menu')">Opções</button>
+            <button onclick="exitGame()">Sair</button>
+        </div>
+
+        <div id="options-menu" class="menu-screen">
+            <h2>Configurações</h2>
+            <button onclick="openScreen('audio-menu')">Áudio</button>
+            <button onclick="openScreen('controls-menu')">Controles</button>
+            <button onclick="openScreen('graphics-menu')">Gráficos</button>
+            <hr>
+            <button onclick="openScreen('main-menu')">Voltar</button>
+        </div>
+
+        <div id="audio-menu" class="menu-screen">
+            <h2>Áudio</h2>
+            <div class="setting-row">
+                <label for="volume-master">Volume Geral:</label>
+                <input type="range" id="volume-master" min="0" max="100" value="80" onchange="updateAudio()">
+            </div>
+            <div class="setting-row">
+                <label for="volume-music">Música:</label>
+                <input type="range" id="volume-music" min="0" max="100" value="70" onchange="updateAudio()">
+            </div>
+            <button onclick="openScreen('options-menu')">Voltar</button>
+        </div>
+
+        <div id="controls-menu" class="menu-screen">
+            <h2>Controles</h2>
+            <div class="setting-row">
+                <span>Mover para Cima:</span>
+                <button id="btn-up" onclick="rebindKey('up')">W</button>
+            </div>
+            <div class="setting-row">
+                <span>Mover para Baixo:</span>
+                <button id="btn-down" onclick="rebindKey('down')">S</button>
+            </div>
+            <button onclick="openScreen('options-menu')">Voltar</button>
+        </div>
+
+        <div id="graphics-menu" class="menu-screen">
+            <h2>Gráficos</h2>
+            <div class="setting-row">
+                <label for="resolution-select">Resolução:</label>
+                <select id="resolution-select" onchange="updateResolution()">
+                    <option value="res-1920">1920 x 1080 (16:9)</option>
+                    <option value="res-1280">1280 x 720 (16:9)</option>
+                    <option value="res-800">800 x 600 (4:3)</option>
+                </select>
+            </div>
+            <button onclick="openScreen('options-menu')">Voltar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
